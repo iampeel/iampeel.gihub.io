@@ -8,6 +8,57 @@ excerpt_separator:  <!--more-->
 
 가나다라 마바사
 
+public class Adapter_CheckBox extends BaseAdapter {
+    private Context ctx;
+    ArrayList<CheckListItem> datas = new ArrayList<CheckListItem>();
+    private View.OnClickListener onClickListener;
+    public Adapter_CheckBox(Context ctx, ArrayList<CheckListItem> datas, View.OnClickListener onClickListener) {
+        this.ctx = ctx;
+        this.datas = datas;
+        this.onClickListener = onClickListener;
+    }
+
+    @Override
+    public int getCount() {
+        return datas.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return datas.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View v = convertView;
+        ViewHolder holder = null;
+        if( v == null ){
+            holder = new ViewHolder();
+            // View를 inflater 시켜준다.
+            v = LayoutInflater.from(ctx).inflate(R.layout.row_cb_list, null);
+            holder.cb = (CheckBox) v.findViewById(R.id.row_cb);
+            holder.tv = (TextView) v.findViewById(R.id.row_tv);
+            v.setTag(holder);
+        }
+        else {
+            holder = (ViewHolder)v.getTag();
+        }
+        holder.tv.setText(datas.get(position).desc);
+        holder.cb.setChecked(datas.get(position).isChecked);
+        holder.tv.setOnClickListener(onClickListener);
+        holder.cb.setOnClickListener(onClickListener);
+        return v;
+    }
+    class ViewHolder {
+        private CheckBox cb;
+        private TextView tv;
+    }
+}
 
 Hydeout updates the original [Hyde](https://github.com/poole/hyde)
 theme for [Jekyll](http://jekyllrb.com) 3.x and adds new functionality.

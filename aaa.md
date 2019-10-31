@@ -13,8 +13,9 @@ To make pages show up in the sidebar, add `sidebar_link: true` to the front
 matter.
 
 
-<p class="message">
-  
+
+
+
   
 <div id="sidebar">
   <header>
@@ -37,4 +38,4 @@ matter.
   {% include sidebar-icon-links.html %}
   {% include copyright.html %}
 </div>
-</p>
+

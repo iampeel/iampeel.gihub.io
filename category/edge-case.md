@@ -1,6 +1,6 @@
 ---
 layout: category
-title: Edge 
+title: Edge case
 ---
 
 Sample category page. You need to create a page for each category.
